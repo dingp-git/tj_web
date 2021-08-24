@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>天津属地化网管</title>
+    <link href="/static/css/libs/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/views/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/views/system_6x3.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!--头部-->
+        <div class="header">
+            <h1>分析查询</h1>
+        </div>
+        <!-- 左侧栏 -->
+        <div class="left-choose" id="choose" onclick="popUp() ">
+            <div class="left-line" id="menutable" style="display: none;">
+                <ul>
+                    <li><a href="/html/system_6x3.html"><img src="/static/img/icon_1.png" alt=""></a><span
+                            style="position: absolute;left: .43rem; top: .85rem;">603</span></li>
+                    <li><a href="/html/system_5x9.html"><img src="/static/img/icon_2.png" alt=""></a><span
+                            style="position: absolute;left: .43rem; top: 2.9rem;">509</span></li>
+                    <li><a href="/html/system_ipsy.html"><img src="/static/img/icon_3.png" alt=""></a><span
+                            style="position: absolute;left: .43rem; top: 4.9rem;">ipsy</span></li>
+                    <li><a href="/html/from.html"><img src="/static/img/icon_4.png" alt=""></a><span
+                            style="position: absolute;left: .23rem; top: 6.95rem;">查询历史</span></li>
+                    <li><a href="#"><img src="/static/img/home.png" alt=""></a><span
+                            style="position: absolute;left: .35rem; top: 9rem;">home</span></li>
+            </div>
+        </div>
+        <!-- 左侧栏完 -->
+        <!--中间-->
+        <div class="container-fluid">
+            <div class="row" style="display: inline;">
+                <div class="col-md-12 col-lg-12 col-xl-12">
+                    <div class="card m-b-30">
+
+                        <ul class="nav nav-tabs" role="tablist" style="margin-left:16px">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#p1" role="tab"
+                                    style="font-size:18px;text-align:center;line-height:.2rem">历史告警</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#p2" role="tab"
+                                    style="font-size:18px;text-align:center;line-height:.2rem">查询分类1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#p3" role="tab"
+                                    style="font-size:18px;text-align:center;line-height:.2rem">查询分类2</a>
+                            </li>
+
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- 历史 -->
+                            <div class="tab-pane active p-3" id="p1" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card ">
+                                            <div class="card-body">
+                                                <div class="form-group row"
+                                                    style="background: linear-gradient(#0f005d,#160035);height: 1.5rem;">
+
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroup-sizing-normal"
+                                                                style="height:0.3rem;background: #ff000000;color: #fff">运营商</span>
+                                                        </div>
+
+                                                        <select class="form-control" style="height:0.3rem">
+                                                            <option>移动</option>
+                                                            <option>联通</option>
+                                                            <option>电信</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroup-sizing-normal"
+                                                                style="height:0.3rem;background: #ff000000;color: #fff;">时间段</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-label="Normal"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            style="height:0.3rem">
+                                                    </div>
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <button class="btn btn-primary"
+                                                            style="margin-right:16px;font-size:16px">查询</button>
+                                                        <button class="btn btn-secondary"
+                                                            style="font-size:16px">重置</button>
+                                                    </div>
+
+                                                </div>
+                                                <!-- <table id="alarm_history" data-toggle="table" class="table table-striped"></table> -->
+                                                <table class=" table table-hover  col-12" id="tb_departments">
+                                                    <thead style="color: #82baf7;">
+                                                        <tr>
+                                                            <th style="font-weight: 700;color: #82baf7;"> <input
+                                                                    type="checkbox"></th>
+                                                            <th style="font-weight: 700;color: #82baf7;">序号</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">告警ip</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">告警系统</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">告警等级</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">告警文字</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">发生次数</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">发生时间</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">结束时间</th>
+
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">1</th>
+                                                            <td>10.40.10.0</td>
+                                                            <td>xx系统</td>
+                                                            <td>1</td>
+                                                            <td>某某流量为0</td>
+                                                            <td>5</td>
+                                                            <td>2021-3-10 16:49:50</td>
+                                                            <td>2021-3-11 16:49:54</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">1</th>
+                                                            <td>10.40.10.0</td>
+                                                            <td>xx系统</td>
+                                                            <td>1</td>
+                                                            <td>某某流量为0</td>
+                                                            <td>2</td>
+                                                            <td>2021-4-15 16:49:50</td>
+                                                            <td>2021-4-16 16:49:54</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col -->
+                                </div>
+                            </div>
+                            <!-- 转移单 -->
+                            <div class="tab-pane p-3" id="p2" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-group row"
+                                                    style="background: linear-gradient(#0f005d,#160035);height: 1.5rem;">
+
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroup-sizing-normal"
+                                                                style="height:0.3rem;background: #ff000000;color: #fff">运营商</span>
+                                                        </div>
+
+                                                        <select class="form-control" style="height:0.3rem">
+                                                            <option>移动</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroup-sizing-normal"
+                                                                style="height:0.3rem;background: #ff000000;color: #fff;">时间段</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-label="Normal"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            style="height:0.3rem">
+                                                    </div>
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <button class="btn btn-primary"
+                                                            style="margin-right:16px;font-size:16px">查询</button>
+                                                        <button class="btn btn-secondary"
+                                                            style="font-size:16px">重置</button>
+                                                    </div>
+
+                                                </div>
+                                                <table class=" table table-hover  col-12" id="tb_departments">
+                                                    <thead style="color: #82baf7;">
+                                                        <tr>
+                                                            <th style="font-weight: 700;color: #82baf7;"> <input
+                                                                    type="checkbox"></th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxxx</th>
+
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="color: #fff;">
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">1</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">2</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">3</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col -->
+                                </div>
+                            </div>
+                            <!-- 废止单 -->
+                            <div class="tab-pane p-3" id="p3" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card ">
+                                            <div class="card-body">
+                                                <div class="form-group row"
+                                                    style="background: linear-gradient(#0f005d,#160035);height: 1.5rem;">
+
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroup-sizing-normal"
+                                                                style="height:0.3rem;background: #ff000000;color: #fff">运营商</span>
+                                                        </div>
+
+                                                        <select class="form-control" style="height:0.3rem;color:#fff">
+                                                            <option>移动</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroup-sizing-normal"
+                                                                style="height:0.3rem;background: #ff000000;color:#fff!important;">时间段</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-label="Normal"
+                                                            aria-describedby="inputGroup-sizing-sm"
+                                                            style="color:#ffffff;height:0.3rem;">
+                                                    </div>
+                                                    <div class="col-4 ml-auto input-group " style="padding:0.4rem;">
+                                                        <button class="btn btn-primary"
+                                                            style="margin-right:16px;font-size:16px">查询</button>
+                                                        <button class="btn btn-secondary"
+                                                            style="font-size:16px">重置</button>
+                                                    </div>
+
+                                                </div>
+                                                <table class=" table table-hover  col-12" id="tb_departments">
+                                                    <thead style="color: #82baf7;">
+                                                        <tr>
+                                                            <th style="font-weight: 700;color: #82baf7;"> <input
+                                                                    type="checkbox"></th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxx</th>
+                                                            <th style="font-weight: 700;color: #82baf7;">xxxxxxx</th>
+
+
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="color: #fff;">
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">1</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">2</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">3</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="checkbox">
+                                                            </td>
+
+                                                            <th scope="row">4</th>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                            <td>xxxxxxx</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <script type="text/javascript" src="/static/js/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/plugins/fontscroll.js"></script>
+    <script type="text/javascript" src="/static/js/plugins/left_menu_bar.js"></script>
+    <script type="text/javascript" src="/static/js/views/public.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/views/from.js"></script> -->
+</body>
+
+</html>

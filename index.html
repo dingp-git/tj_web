@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天津属地化网管</title>
+    <link rel="stylesheet" href="/static/css/system.css">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript"src="/static/js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('.myscroll').myScroll({
+                speed: 60, //数值越大，速度越慢
+                rowHeight: 24 //li的高度
+            });
+        })
+
+        $(document).ready(function () {
+            var whei = $(window).width()
+            $("html").css({ fontSize: whei / 22 });
+            $(window).resize(function () {
+                var whei = $(window).width();
+                $("html").css({ fontSize: whei / 22 })
+            });
+        });
+    </script>
+</head>
+<body >
+
+<div class="main">
+
+        <div class="top">
+            <!-- system1 -->
+            <div class="system1">
+                <img src="/static/images/round.png" alt="">
+                <div class="font-system"><a href="/html/system_6x3.html">603</a></div>
+            </div>
+            <!-- system2 -->
+            <div class="system2">
+                <img src="/static/images/round2.png" alt="">
+                <div class="font-system"><a href="#">509</a></div>
+            </div>
+            <!-- system3 -->
+            <div class="system3">
+                <img src="/static/images/round3.png" alt="">
+                <div class="font-system"><a href="#">ipsy</a></div>
+            </div>
+        </div>
+        <div class="bottom">
+<!-- form1 -->
+<div class="form1" ><a href="#">告警策略</a></div>
+<!-- form2 -->
+<div class="form2"><a href="/html/from.html">分析查询</a></div>
+        </div>
+
+
+ 
+</div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/fontscroll.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script language="JavaScript">
+    function popUp() 
+    {
+    newX = window.event.x + document.body.scrollLeft;
+    newY = window.event.y + document.body.scrollTop;
+    menu = document.all.menutable;
+    if ( menu.style.display == "")
+    {
+    menu.style.display = "none" }
+    else {
+    menu.style.display = "";}
+    menu.style.pixelLeft = newX - 50;
+    menu.style.pixelTop = newY - 50;
+    }
+    </script>
+<script>
+ $(function () {
+     var allLis = document.getElementById("tab_header").getElementsByTagName("li");
+     var allDom = document.getElementById("tab_content").getElementsByClassName("dom");
+
+     // 2. 遍历监听
+     for(var i=0; i<allLis.length; i++){
+         var li = allLis[i];
+         li.index = i;
+
+         li.onclick = function () {
+             console.log(i);
+             for(var j=0; j<allLis.length; j++){
+                 allLis[j].className = '';
+                 allDom[j].style.display = 'none';
+             }
+
+             this.className = 'selected';
+             allDom[this.index].style.display = 'block';
+
+         }
+     }
+ })
+</script>
+
+</body>
+</html>
